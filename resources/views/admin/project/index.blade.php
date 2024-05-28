@@ -15,11 +15,15 @@
         <table class="table project-table">
             <thead>
                 <tr>
-                    <th scope="col"><a href="{{ route('admin.orderby', ['direction' => $direction, 'column'=> 'id' ]) }}" >ID</a></th>
-                    <th scope="col"><a href="{{ route('admin.orderby', ['direction' => $direction, 'column'=> 'title' ]) }}">Nome</a></th>
+                    <th scope="col"><a
+                            href="{{ route('admin.orderby', ['direction' => $direction, 'column' => 'id']) }}">ID</a></th>
+                    <th scope="col"><a
+                            href="{{ route('admin.orderby', ['direction' => $direction, 'column' => 'title']) }}">Nome</a>
+                    </th>
                     <th scope="col">Descrizione</th>
                     <th scope="col">Img</th>
                     <th scope="col">Type</th>
+                    <th scope="col">Technologie</th>
                     <th scope="col">Azioni</th>
                 </tr>
             </thead>
@@ -55,6 +59,19 @@
                             @if ($project->type)
                                 {{ $project->type->title }}
                             @endif
+
+                        </td>
+
+                        <td>
+                            @if ($project->technologie)
+                                @forelse ($project->technologie as $technologie)
+                                    <span class="badge text-bg-success">{{ $technologie->title }}</span>
+                                @empty
+                                    No Technologie
+                                @endforelse
+                            @endif
+
+
 
                         </td>
 
