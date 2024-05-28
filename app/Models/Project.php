@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Project extends Model
 {
@@ -16,5 +17,8 @@ class Project extends Model
 
     protected $fillable = ['title', 'slug','img', 'type_id' ,'description'];
 
-    public
+
+    public function technologie(){
+        return $this->belongsToMany(Technologie::class);
+    }
 }
