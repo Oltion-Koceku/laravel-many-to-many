@@ -12,7 +12,7 @@
         </form>
 
 
-        <table class="table project-table">
+        <table class="table project-table w-100">
             <thead>
                 <tr>
                     <th scope="col"><a
@@ -51,7 +51,7 @@
                                 <img class="w-100" src="{{ asset('storage/' . $project->img) }}"
                                     alt="{{ $project->title }}">
                             @else
-                                <img class="w-100" src="/img/no-img.jpg" alt="">
+                                <img class="w-100" src="/img/no-img.jpg" alt="no img">
                             @endif
                         </td>
 
