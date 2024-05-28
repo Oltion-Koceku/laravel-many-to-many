@@ -48,6 +48,17 @@
         </div>
 
         <div class="mb-3">
+            <label class="d-block mb-2" for="technologie">Technologie:</label>
+            @foreach ($technologies as $technologie)
+                <input name="technologie[]" type="checkbox" class="btn-check" id="check-{{$technologie->id}}" value="{{$technologie->id}}" @if ($project->technologie->contains($technologie))
+                    checked
+                @endif>
+                <label class="btn btn-outline-primary" for="check-{{$technologie->id}}">{{ $technologie->title }}</label>
+            @endforeach
+
+        </div>
+
+        <div class="mb-3">
             <select name="type_id" class="form-select" aria-label="Default select example" name="type_id">
                 <option value="">Scegli il Type</option>
 

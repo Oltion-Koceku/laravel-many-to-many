@@ -50,7 +50,7 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
         $types = Type::all();
 
@@ -58,7 +58,7 @@ class ProjectController extends Controller
 
 
 
-        return view('admin.project.create', compact('types', 'technologies'));
+        return view('admin.project.create', compact('types', 'technologies', 'project'));
     }
 
     /**
@@ -113,7 +113,9 @@ class ProjectController extends Controller
     {
 
         $types = Type::all();
-        return view('admin.project.edit', compact('project', 'types'));
+
+        $technologies = Technologie::all();
+        return view('admin.project.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -140,6 +142,11 @@ class ProjectController extends Controller
             $val_data['img'] = $request->img ? Storage::put('uploads', $request->img) : null;
 
             $project->update($val_data);
+
+            if (array_key_exists('technologie',  $val_data)) {
+
+                $project->technologie()->sync($val_data['technologie']);
+            }
 
             return redirect()->route('admin.projects.index')->with('good', 'Il Progetto è stato aggiunto con successo');
         }

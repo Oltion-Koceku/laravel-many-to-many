@@ -48,8 +48,11 @@
         </div>
 
         <div class="mb-3">
+            <label class="d-block mb-2" for="technologie">Technologie:</label>
             @foreach ($technologies as $technologie)
-                <input name="technologie[]" type="checkbox" class="btn-check" id="check-{{$technologie->id}}" value="{{$technologie->id}}">
+                <input name="technologie[]" type="checkbox" class="btn-check" id="check-{{$technologie->id}}" value="{{$technologie->id}}" @if ($errors->any() && in_array($technologie->id, old('technologie', [])) || !$errors->any() && $project->technologie->contains($technologie))
+                checked @endif>
+
                 <label class="btn btn-outline-primary" for="check-{{$technologie->id}}">{{ $technologie->title }}</label>
             @endforeach
 
