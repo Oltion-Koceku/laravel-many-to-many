@@ -6,6 +6,7 @@ use App\Functions\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use App\Models\Technologie;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -53,9 +54,11 @@ class ProjectController extends Controller
     {
         $types = Type::all();
 
+        $technologies = Technologie::all();
 
 
-        return view('admin.project.create', compact('types'));
+
+        return view('admin.project.create', compact('types', 'technologies'));
     }
 
     /**
@@ -64,7 +67,7 @@ class ProjectController extends Controller
     public function store(ProjectRequest $request)
     {
 
-
+          $data=$request->all();
         // Se esiste il progentto grazie alla query di sql prendendo il primo risultato ci reindirizza alla index
 
         $exist = Project::where('title', $request->title)->first();
@@ -84,6 +87,11 @@ class ProjectController extends Controller
             $new_project->type_id = $request->type_id;
             $new_project->description = $request->description;
             $new_project->save();
+
+            if (array_key_exists('technologie',  $data)) {
+
+                $new_project->technologie()->attach($data['technologie']);
+            }
 
             return redirect()->route('admin.projects.index')->with('good', 'Il Progetto è stato aggiunto con successo');
         }
