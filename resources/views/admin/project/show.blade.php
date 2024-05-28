@@ -8,6 +8,10 @@
             <h5 class="card-title">{{ $data->title }}</h5>
             <p class="card-text">{{ $data->description }}</p>
             <p>{{ $data->type->title }}</p>
+            <p>Technologie : @foreach ($data->technologie as $technologie)
+                <span class="badge text-bg-success">{{ $technologie->title }}</span>
+
+            @endforeach</p>
         </div>
     </div>
 @endsection

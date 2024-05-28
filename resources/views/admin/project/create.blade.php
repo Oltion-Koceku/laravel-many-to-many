@@ -36,13 +36,23 @@
         </div>
         <div class="mb-3">
             <label for="img" class="form-label">Immagine</label>
-            <input name="img" type="file" class="form-control" id="img" value="{{ old('img') }}" onchange="showImage(event)">
+            <input name="img" type="file" class="form-control" id="img" value="{{ old('img') }}"
+                onchange="showImage(event)">
             @error('thumb')
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     <h3>{{ $message }}</h3>
                 </div>
             @enderror
-            <img id="thumb" src="placeholder.jpg" alt="preview" style="max-width: 100%; height: 200px; margin-top: 10px;">
+            <img id="thumb" src="placeholder.jpg" alt="preview"
+                style="max-width: 100%; height: 200px; margin-top: 10px;">
+        </div>
+
+        <div class="mb-3">
+            @foreach ($technologies as $technologie)
+                <input name="technologie[]" type="checkbox" class="btn-check" id="check-{{$technologie->id}}" value="{{$technologie->id}}">
+                <label class="btn btn-outline-primary" for="check-{{$technologie->id}}">{{ $technologie->title }}</label>
+            @endforeach
+
         </div>
 
         <div class="mb-3">

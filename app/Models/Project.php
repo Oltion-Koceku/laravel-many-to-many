@@ -15,7 +15,7 @@ class Project extends Model
         return $this->belongsTo(Type::class);
     }
 
-    protected $fillable = ['title', 'slug','img', 'type_id' ,'description'];
+    protected $fillable = ['title', 'slug','img', 'type_id' ,'description', 'technologie_id'];
 
 
     public function technologie(){
