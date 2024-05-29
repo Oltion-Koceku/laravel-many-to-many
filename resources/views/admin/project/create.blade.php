@@ -59,6 +59,7 @@
         </div>
 
         <div class="mb-3">
+            <label for="type_id" class="form-label">Type</label>
             <select name="type_id" class="form-select" aria-label="Default select example" name="type_id">
                 <option value="">Scegli il Type</option>
 
