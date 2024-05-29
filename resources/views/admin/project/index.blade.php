@@ -23,7 +23,7 @@
                     <th scope="col">Descrizione</th>
                     <th scope="col">Img</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Technologie</th>
+                    <th scope="col">Technologie (Click badge)</th>
                     <th scope="col">Azioni</th>
                 </tr>
             </thead>
