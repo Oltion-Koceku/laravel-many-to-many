@@ -39,7 +39,7 @@
         <div class="mb-3">
             <label for="img" class="form-label">Immagine</label>
             <input name="img" type="file" class="form-control @error('img') is-invalid @enderror" id="img"
-                value="{{ old($project->img) }}">
+                value="{{ $project->img }}">
             @error('thumb')
                 <div id="validationServerUsernameFeedback" class="invalid-feedback">
                     <h3>{{ $message }}</h3>

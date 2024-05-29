@@ -58,6 +58,8 @@
                         <td>
                             @if ($project->type)
                                 {{ $project->type->title }}
+                            @else
+                                --No Type--
                             @endif
 
                         </td>
@@ -65,7 +67,7 @@
                         <td>
                             @if ($project->technologie)
                                 @forelse ($project->technologie as $technologie)
-                                    <span class="badge text-bg-success">{{ $technologie->title }}</span>
+                                    <span class="badge text-bg-success"><a class="text-decoration-none text-white" href="{{route('admin.searchTechnologie', $technologie->title)}}">{{ $technologie->title }}</a></span>
                                 @empty
                                     No Technologie
                                 @endforelse

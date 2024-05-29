@@ -41,7 +41,7 @@ Route::middleware(['auth', 'verified'])
         // rotte custom
 
         Route::get('/orderby/{direction}/{column}', [ProjectController::class, 'orderBy'])->name('orderby');
-
+        Route::get('/technologie-search/{title}', [ProjectController::class, 'searchTechnologie'])->name('searchTechnologie');
 
     });
 

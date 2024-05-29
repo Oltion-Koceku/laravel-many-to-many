@@ -37,6 +37,20 @@ class ProjectController extends Controller
         return view('admin.project.index', compact('projects', 'direction'));
     }
 
+    public function searchTechnologie($title){
+        if ($title) {
+            $projects = Project::whereHas('technologie', function ($query) use ($title) {
+                $query->where('title', $title);
+            })->paginate(15);
+        }
+
+        $direction = 'DESC';
+
+        return view('admin.technologieSearch', compact('projects', 'direction'));
+
+
+    }
+
 
     public function orderBy($direction, $column){
 
