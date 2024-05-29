@@ -13,7 +13,7 @@
     </form>
 
 
-    <table class="table project-table w-100">
+    <table class="table table-striped project-table w-100">
         <thead>
             <tr>
                 <th scope="col"><a

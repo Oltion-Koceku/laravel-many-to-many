@@ -42,6 +42,7 @@ Route::middleware(['auth', 'verified'])
 
         Route::get('/orderby/{direction}/{column}', [ProjectController::class, 'orderBy'])->name('orderby');
         Route::get('/technologie-search/{title}', [ProjectController::class, 'searchTechnologie'])->name('searchTechnologie');
+        Route::get('/type-search/{title}', [ProjectController::class, 'searchType'])->name('searchType');
 
     });
 

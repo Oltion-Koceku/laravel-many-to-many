@@ -51,6 +51,20 @@ class ProjectController extends Controller
 
     }
 
+    public function searchType($title){
+        if ($title) {
+            $projects = Project::whereHas('type', function ($query) use ($title) {
+                $query->where('title', $title);
+            })->paginate(15);
+        }
+
+        $direction = 'DESC';
+
+        return view('admin.typesearch', compact('projects', 'direction'));
+
+
+    }
+
 
     public function orderBy($direction, $column){
 
